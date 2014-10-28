@@ -22,14 +22,19 @@ public class Edge extends QuadCurve {
         super(source.getCenterX() , source.getCenterY() , controlX , controlY , destination.getCenterX() , destination.getCenterY());
         super.setFill(Color.TRANSPARENT);
         super.setStroke(DEFAULT_COLOR);
-        super.setStrokeWidth(3);
+        super.setStrokeWidth(Math.sqrt(5) + 1);
         parentNode = source;
         destinationNode = destination;
-        weight = 1;
+        weight = 5;
     }
 
+    /*
+        Stroke thickness is dependent on the weight. This way the user
+        can get a rough idea of the weight by the appearance.
+     */
     public void setWeight(int weight) {
         this.weight = weight;
+        super.setStrokeWidth(Math.sqrt(weight) + 1);
     }
 
     public int getWeight(){
