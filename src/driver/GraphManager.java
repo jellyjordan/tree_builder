@@ -43,22 +43,22 @@ public class GraphManager {
         or a vertex. The currentReference is updated to the
         node found.
      */
-    public static boolean checkLocations(double x , double y){
+    public static int checkLocations(double x , double y){
         if(!graph.getVertices().isEmpty()){
             for(Vertex vertex : graph.getVertices()){
                 if(vertex.getBoundsInParent().contains(x , y)){
                     currentReference = vertex;
-                    return false;
+                    return 1;
                 }
             }
             for(Edge edge : graph.getEdges()){
                 if(edge.getBoundsInParent().contains(x , y)){
                     currentReference = edge;
-                    return false;
+                    return 2;
                 }
             }
         }
-        return true;
+        return 0;
     }
 
     /*
