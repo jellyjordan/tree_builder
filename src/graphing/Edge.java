@@ -22,10 +22,9 @@ public class Edge extends QuadCurve {
         super(source.getCenterX() , source.getCenterY() , controlX , controlY , destination.getCenterX() , destination.getCenterY());
         super.setFill(Color.TRANSPARENT);
         super.setStroke(DEFAULT_COLOR);
-        super.setStrokeWidth(Math.sqrt(5) + 1);
         parentNode = source;
         destinationNode = destination;
-        weight = 5;
+        setWeight(5);
     }
 
     /*
