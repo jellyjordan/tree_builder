@@ -7,7 +7,7 @@ import javafx.scene.shape.QuadCurve;
     Holds the weight of the connection between a source vertex
     and a destination vertex for directed graphs.
  */
-public class Edge extends QuadCurve {
+public class Edge extends QuadCurve implements Comparable<Edge>{
     public final static Color DEFAULT_COLOR = Color.BLACK;
     private final Vertex parentNode;
     private final Vertex destinationNode;
@@ -46,5 +46,22 @@ public class Edge extends QuadCurve {
 
     public Vertex getDestinationNode(){
         return destinationNode;
+    }
+
+    /*
+        sorts the edge list in non-decreasing order
+        for use in greedy algorithms
+     */
+    @Override
+    public int compareTo(Edge o) {
+        if(this.weight > o.getWeight()){
+            return 1;
+        }
+        else if(this.weight == o.getWeight()){
+            return 0;
+        }
+        else{
+            return -1;
+        }
     }
 }
