@@ -21,6 +21,10 @@ public class GraphManager {
         return currentReference;
     }
 
+    public static Graph getGraph(){
+        return graph;
+    }
+
     /*
         Creates a new vertex and sets up the listeners which
         respond to drag and drop user actions.
@@ -149,6 +153,5 @@ public class GraphManager {
             }
         });
     }
-
 
 }
