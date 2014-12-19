@@ -49,7 +49,7 @@ public class Edge extends QuadCurve implements Comparable<Edge>{
     }
 
     /*
-        sorts the edge list in non-decreasing order
+        Sorts the edge list in non-decreasing order
         for use in greedy algorithms
      */
     @Override
@@ -63,5 +63,19 @@ public class Edge extends QuadCurve implements Comparable<Edge>{
         else{
             return -1;
         }
+    }
+
+    /*
+        Edges are equal if their parent IDs are equal
+        and their destination IDs are equal.
+     */
+    @Override
+    public boolean equals(Object object){
+        Edge edge = (Edge) object;
+        if(this.parentNode.getVertexID() == edge.parentNode.getVertexID() &&
+                this.destinationNode.getVertexID() == edge.destinationNode.getVertexID()){
+            return true;
+        }
+        return false;
     }
 }
