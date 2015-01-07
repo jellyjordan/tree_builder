@@ -3,6 +3,8 @@ package graphing;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import java.util.ArrayList;
+
 /*
     Used in the Graph object to provide a node. GUI is also
     stored here
@@ -12,7 +14,9 @@ public class Vertex extends Circle implements Comparable<Vertex>{
     public static final Color LINK_COLOR = Color.DODGERBLUE;
     public static final Color NO_LINK_COLOR = Color.RED;
     public static final Color STROKE_COLOR = Color.BLACK;
+
     private final int vertexID;
+    private ArrayList<Edge> edges;      // Outgoing edges
 
     /*
         Creates the node at the x and y coordinates and
@@ -23,10 +27,15 @@ public class Vertex extends Circle implements Comparable<Vertex>{
         super.setStroke(STROKE_COLOR);
         super.setStrokeWidth(3);
         this.vertexID = vertexID;
+        edges = new ArrayList<Edge>();
     }
 
     public int getVertexID(){
         return vertexID;
+    }
+
+    public ArrayList<Edge> getEdges(){
+        return edges;
     }
 
     /*

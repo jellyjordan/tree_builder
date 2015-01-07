@@ -48,7 +48,15 @@ public class Graph {
         double[] controlPoints = GraphMath.getControlVertices(vertexSource.getCenterX() , vertexSource.getCenterY() ,
                                                               vertexDestination.getCenterX() , vertexDestination.getCenterY() );
 
-        edges.add(new Edge(vertexSource , vertexDestination , controlPoints[0] , controlPoints[1]));
+        Edge edge = new Edge(vertexSource , vertexDestination , controlPoints[0] , controlPoints[1]);
+
+        /*
+            Adds edge references to the list in graph, but also to the
+            list in the parent vertex in order look up edges based on the
+            source node.
+         */
+        edges.add(edge);
+        vertices.get(vertexSource.getVertexID()).getEdges().add(edge);
         return true;
     }
 
