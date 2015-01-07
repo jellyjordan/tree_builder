@@ -83,8 +83,8 @@ public class Kruskal {
         Sets the edges marked for deletion invisible
         and removed their reference from the graph
      */
-    private static void updateGraphs(ArrayList<Edge> keepList , ArrayList<Edge> edges){
-        for(Edge edge : keepList){
+    private static void updateGraphs(ArrayList<Edge> delList , ArrayList<Edge> edges){
+        for(Edge edge : delList){
             edge.setVisible(false);
             edges.remove(edge);
         }
