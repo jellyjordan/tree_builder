@@ -7,6 +7,7 @@
 package driver;
 
 import algorithm.Kruskal;
+import algorithm.TSP;
 import graphing.Edge;
 import graphing.Graph;
 import javafx.animation.AnimationTimer;
@@ -20,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
@@ -88,15 +90,26 @@ public class Main extends Application {
         });
 
         // Button initialization
-        Button runButton = new Button("Create Tree");
-        runButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        Button runTreeButton = new Button("Create Tree");
+        runTreeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Kruskal.kruskal(GraphManager.getGraph());
             }
         });
 
-        vertices.getChildren().add(runButton);
+        Button runTourButton = new Button("Create Tour");
+        runTourButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                TSP.tour(GraphManager.getGraph());
+            }
+        });
+
+        HBox runBox = new HBox();
+        runBox.getChildren().addAll(runTourButton, runTreeButton);
+
+         vertices.getChildren().add(runBox);
         primaryStage.setTitle("Graph Builder");
         primaryStage.setScene(viewPort);
         primaryStage.show();
